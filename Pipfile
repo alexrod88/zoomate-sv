@@ -8,6 +8,8 @@ verify_ssl = true
 [packages]
 django = "*"
 django-neomodel = "*"
+neo4j = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.7"
