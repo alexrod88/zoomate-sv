@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 
 import os
 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'zoomate.settings')
+os.environ.setdefault('DJANGO_CONFIGURATION', 'dev')
 
 from configurations.wsgi import get_wsgi_application
 
