@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from zoomate.models import Pet, Parent
+from zoomate.models import Animal, Profile
 
-class ParentAdmin(admin.ModelAdmin):
-    list_display = ('category', 'gender', 'race', 'certificate',)
+class AnimalAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'gender', 'race', 'certificate',)
 
-class PetAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'gender', 'race', 'certificate', 'father')
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'profile_photo')
 
-admin.site.register(Parent, ParentAdmin)
-admin.site.register(Pet, PetAdmin)
+admin.site.register(Animal, AnimalAdmin)
+admin.site.register(Profile, ProfileAdmin)
