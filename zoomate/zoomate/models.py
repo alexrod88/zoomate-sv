@@ -30,8 +30,8 @@ class Adoption(models.Model):
         Animal, on_delete=models.CASCADE, related_name='Animal', verbose_name='Animal in adoption')
     owner = models.OneToOneField(User, on_delete=models.CASCADE,
                                  related_name='User', verbose_name="User giving adoption")
-    createdAt = models.DateTimeField()
-    modifiedAt = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
 
 class Sale(models.Model):
@@ -40,8 +40,8 @@ class Sale(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE,
                                  related_name='User', verbose_name="User doing sell")
     price = models.FloatField()
-    createdAt = models.DateTimeField()
-    modifiedAt = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
 
 class Categories(models.Model):

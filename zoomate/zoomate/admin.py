@@ -9,10 +9,10 @@ class PetAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'gender', 'race', 'certificate', 'father')
 
 class AdoptionAdmin(admin.ModelAdmin):
-    list_display = ('animal', 'owner', 'createdAt', 'modifiedAt')
+    list_display = ('animal', 'owner', 'created_at', 'modified_at')
 
 class SaleAdmin(admin.ModelAdmin):
-    list_display = ('animal', 'owner', 'price', 'createdAt', 'modifiedAt')
+    list_display = ('animal', 'owner', 'price', 'created_at', 'modified_at')
 
 class CategoriesAdmin(admin.ModelAdmin):
     list_display = ('name', 'icon')

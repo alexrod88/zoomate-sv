@@ -43,8 +43,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('animal', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='animal', to='zoomate.animal', verbose_name="Animal in adoption")),
                 ('owner', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='user', to='zoomate.user', verbose_name="User giving adoption")),
-                ('createdAt', models.DateTimeField()),
-                ('modifiedAt', models.DateTimeField()),
+                ('created_at', models.DateTimeField()),
+                ('modified_at', models.DateTimeField()),
             ],
         ),
         migrations.CreateModel(
@@ -54,8 +54,8 @@ class Migration(migrations.Migration):
                 ('animal', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='animal', to='zoomate.animal', verbose_name="Animal on sale")),
                 ('owner', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='user', to='zoomate.user', verbose_name="User doing sell")),
                 ('price', models.Float()),
-                ('createdAt', models.DateTimeField()),
-                ('modifiedAt', models.DateTimeField()),
+                ('created_at', models.DateTimeField()),
+                ('modified_at', models.DateTimeField()),
             ],
         ),
         migrations.CreateModel(
