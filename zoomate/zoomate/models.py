@@ -25,3 +25,37 @@ class Pet(models.Model):
                                   related_name='father')
     # TODO: Add photos Model (list of string)
 
+class Adoption(models.Model):
+    animal = models.OneToOneField(
+        Animal, on_delete=models.CASCADE, related_name='Animal', verbose_name='Animal in adoption')
+    owner = models.OneToOneField(User, on_delete=models.CASCADE,
+                                 related_name='User', verbose_name="User giving adoption")
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+
+class Sale(models.Model):
+    animal = models.OneToOneField(
+        Animal, on_delete=models.CASCADE, related_name='Animal', verbose_name='Animal on sale')
+    owner = models.OneToOneField(User, on_delete=models.CASCADE,
+                                 related_name='User', verbose_name="User doing sell")
+    price = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+
+class Categories(models.Model):
+    name = models.CharField(max_length=30)
+    icon = models.ImageField()
+
+
+class Races(models.Model):
+    name = models.CharField(max_length=30)
+    category = models.ManyToOne(Categories, on_delete=models.CASCADE,
+                                related_name='Category', verbose_name='Category this race belongs to')
+
+
+class Vaccines(models.Model):
+    name = models.CharField(max_length=30)
+    category = models.ManyToOne(Categories, on_delete=models.CASCADE,
+                                related_name='Category', verbose_name='Category this vaccine belongs to')
