@@ -8,6 +8,7 @@ class Profile(models.Model):
     lon = models.DecimalField(max_digits=9, decimal_places=6)
     lat = models.DecimalField(max_digits=9, decimal_places=6)
     upp = models.CharField(null=True, blank=True, max_length=100)
+
     profile_photo = models.ImageField(upload_to="profile_pics")
 
 
