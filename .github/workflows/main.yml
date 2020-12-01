@@ -35,4 +35,4 @@ jobs:
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
       run: |
-        pipenv run python3 manage.py test # Don't forget to run tests
+        pipenv run python3 zoomate/manage.py test # Don't forget to run tests
