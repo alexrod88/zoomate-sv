@@ -96,7 +96,7 @@ class Categories(models.Model):
 
 class Races(models.Model):
     name = models.CharField(max_length=30)
-    category = models.ManyToOne(
+    category = models.ForeignKey(
         Categories,
         on_delete=models.CASCADE,
         related_name="Category",
@@ -106,7 +106,7 @@ class Races(models.Model):
 
 class Vaccines(models.Model):
     name = models.CharField(max_length=30)
-    category = models.ManyToOne(
+    category = models.ForeignKey(
         Categories,
         on_delete=models.CASCADE,
         related_name="Category",
