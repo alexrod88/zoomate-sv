@@ -7,23 +7,33 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('zoomate', '0003_auto_20201128_0834'),
+        ("zoomate", "0003_auto_20201128_0834"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='animal',
-            name='father',
-            field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='animal_father', to='zoomate.animal'),
+            model_name="animal",
+            name="father",
+            field=models.OneToOneField(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="animal_father",
+                to="zoomate.animal",
+            ),
         ),
         migrations.AddField(
-            model_name='animal',
-            name='mother',
-            field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='animal_mother', to='zoomate.animal'),
+            model_name="animal",
+            name="mother",
+            field=models.OneToOneField(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="animal_mother",
+                to="zoomate.animal",
+            ),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='upp',
+            model_name="profile",
+            name="upp",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
     ]

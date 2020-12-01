@@ -7,7 +7,6 @@ verify_ssl = true
 
 [packages]
 django = "*"
-django-neomodel = "*"
 neo4j = "*"
 djangorestframework = "*"
 psycopg2-binary = "*"

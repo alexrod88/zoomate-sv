@@ -16,53 +16,274 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Animal',
+            name="Animal",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=30)),
-                ('description', models.CharField(max_length=100)),
-                ('category', models.CharField(choices=[('DOG', 'Dog'), ('CAT', 'Cat'), ('HAMSTER', 'Hamster')], max_length=20)),
-                ('race', models.IntegerField()),
-                ('vaccines', models.CharField(max_length=30, validators=[django.core.validators.int_list_validator])),
-                ('gender', models.CharField(choices=[('MALE', 'Male'), ('FEMALE', 'Female')], max_length=7)),
-                ('age', models.IntegerField()),
-                ('certificate', models.CharField(blank=True, max_length=40)),
-                ('lon', models.DecimalField(decimal_places=6, max_digits=9)),
-                ('lat', models.DecimalField(decimal_places=6, max_digits=9)),
-                ('father', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='animal_father', to='zoomate.animal')),
-                ('mother', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='animal_mother', to='zoomate.animal')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=30)),
+                ("description", models.CharField(max_length=100)),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("DOG", "Dog"),
+                            ("CAT", "Cat"),
+                            ("HAMSTER", "Hamster"),
+                        ],
+                        max_length=20,
+                    ),
+                ),
+                ("race", models.IntegerField()),
+                (
+                    "vaccines",
+                    models.CharField(
+                        max_length=30,
+                        validators=[django.core.validators.int_list_validator],
+                    ),
+                ),
+                (
+                    "gender",
+                    models.CharField(
+                        choices=[("MALE", "Male"), ("FEMALE", "Female")], max_length=7
+                    ),
+                ),
+                ("age", models.IntegerField()),
+                ("certificate", models.CharField(blank=True, max_length=40)),
+                ("lon", models.DecimalField(decimal_places=6, max_digits=9)),
+                ("lat", models.DecimalField(decimal_places=6, max_digits=9)),
+                (
+                    "father",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="animal_father",
+                        to="zoomate.animal",
+                    ),
+                ),
+                (
+                    "mother",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="animal_mother",
+                        to="zoomate.animal",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('lon', models.DecimalField(decimal_places=6, max_digits=9)),
-                ('lat', models.DecimalField(decimal_places=6, max_digits=9)),
-                ('upp', models.CharField(max_length=100, null=True)),
-                ('profile_photo', models.ImageField(upload_to='profile_pics')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("lon", models.DecimalField(decimal_places=6, max_digits=9)),
+                ("lat", models.DecimalField(decimal_places=6, max_digits=9)),
+                ("upp", models.CharField(max_length=100, null=True)),
+                ("profile_photo", models.ImageField(upload_to="profile_pics")),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='AnimalPhoto',
+            name="AnimalPhoto",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('img', models.ImageField(null=True, upload_to='animal_imgs')),
-                ('animal', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='zoomate.animal')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("img", models.ImageField(null=True, upload_to="animal_imgs")),
+                (
+                    "animal",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="zoomate.animal"
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='animal',
-            name='owner',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='zoomate.profile'),
+            model_name="animal",
+            name="owner",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="zoomate.profile"
+            ),
         ),
         migrations.CreateModel(
-            name='Match',
+            name="Match",
             fields=[
-                ('animal_a', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, related_name='animal_a', serialize=False, to='zoomate.animal')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('animal_b', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='animal_b', to='zoomate.animal')),
+                (
+                    "animal_a",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        primary_key=True,
+                        related_name="animal_a",
+                        serialize=False,
+                        to="zoomate.animal",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "animal_b",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="animal_b",
+                        to="zoomate.animal",
+                    ),
+                ),
+            ],
+        ),
+        migrations.CreateModel(
+            name="Adoption",
+            fields=[
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "animal",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="animal",
+                        to="zoomate.animal",
+                        verbose_name="Animal in adoption",
+                    ),
+                ),
+                (
+                    "owner",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="user",
+                        to="zoomate.user",
+                        verbose_name="User giving adoption",
+                    ),
+                ),
+                ("created_at", models.DateTimeField()),
+                ("modified_at", models.DateTimeField()),
+            ],
+        ),
+        migrations.CreateModel(
+            name="Sale",
+            fields=[
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "animal",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="animal",
+                        to="zoomate.animal",
+                        verbose_name="Animal on sale",
+                    ),
+                ),
+                (
+                    "owner",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="user",
+                        to="zoomate.user",
+                        verbose_name="User doing sell",
+                    ),
+                ),
+                ("price", models.Float()),
+                ("created_at", models.DateTimeField()),
+                ("modified_at", models.DateTimeField()),
+            ],
+        ),
+        migrations.CreateModel(
+            name="Categories",
+            fields=[
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(blank=True, max_length=30)),
+                ("icon", models.ImageField()),
+            ],
+        ),
+        migrations.CreateModel(
+            name="Races",
+            fields=[
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(blank=True, max_length=30)),
+                (
+                    "category",
+                    models.ManyToOne(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="Category",
+                        to="zoomate.categories",
+                        verbose_name="Category this race belongs to",
+                    ),
+                ),
+            ],
+        ),
+        migrations.CreateModel(
+            name="Vaccines",
+            fields=[
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(blank=True, max_length=30)),
+                (
+                    "category",
+                    models.ManyToOne(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="Category",
+                        to="zoomate.categories",
+                        verbose_name="Category this vaccine belongs to",
+                    ),
+                ),
             ],
         ),
     ]
