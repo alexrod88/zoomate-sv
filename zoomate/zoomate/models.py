@@ -25,7 +25,7 @@ class Animal(models.Model):
     category = models.CharField(choices=CATEGORY_TYPES.choices, max_length=20)
     race = models.IntegerField()
     vaccines = models.CharField(validators=[int_list_validator], max_length=30)
-
+    
     gender = models.CharField(choices=GENDER_TYPES.choices, max_length=7)
     age = models.IntegerField()
     certificate = models.CharField(blank=True, max_length=40)
