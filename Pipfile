@@ -7,9 +7,10 @@ verify_ssl = true
 
 [packages]
 django = "*"
-django-neomodel = "*"
 neo4j = "*"
 djangorestframework = "*"
+psycopg2-binary = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
