@@ -59,13 +59,13 @@ class Adoption(models.Model):
     animal = models.OneToOneField(
         Animal,
         on_delete=models.CASCADE,
-        related_name="Animal",
+        related_name="adopted_animal",
         verbose_name="Animal in adoption",
     )
     owner = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
-        related_name="User",
+        related_name="adoption_owner",
         verbose_name="User giving adoption",
     )
     created_at = models.DateTimeField(auto_now_add=True)
@@ -76,13 +76,13 @@ class Sale(models.Model):
     animal = models.OneToOneField(
         Animal,
         on_delete=models.CASCADE,
-        related_name="Animal",
+        related_name="sale_animal",
         verbose_name="Animal on sale",
     )
     owner = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
-        related_name="User",
+        related_name="sale_owner",
         verbose_name="User doing sell",
     )
     price = models.FloatField()
@@ -100,7 +100,7 @@ class Races(models.Model):
     category = models.ForeignKey(
         Categories,
         on_delete=models.CASCADE,
-        related_name="Category",
+        related_name="race_category",
         verbose_name="Category this race belongs to",
     )
 
@@ -110,6 +110,6 @@ class Vaccines(models.Model):
     category = models.ForeignKey(
         Categories,
         on_delete=models.CASCADE,
-        related_name="Category",
+        related_name="vaccine_category",
         verbose_name="Category this vaccine belongs to",
     )
