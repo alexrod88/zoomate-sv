@@ -21,7 +21,7 @@ class AnimalAdmin(admin.ModelAdmin):
         "certificate",
     )
 
-    
+
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ("user", "profile_photo")
 
